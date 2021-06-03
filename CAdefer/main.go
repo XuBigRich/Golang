@@ -31,6 +31,21 @@ func deferDemo() {
 	fmt.Println("end")
 	defer fmt.Println("呵呵呵")
 }
+func add(x int) int {
+	return x + 1
+}
+func deferDemo1() (x int) {
+	x=1
+	defer add(x)
+	return x
+}
+func deferDemo2() int {
+	x:=1
+	defer add(x)
+	return x
+}
 func main() {
 	deferDemo()
+	fmt.Println(deferDemo1())
+	fmt.Println(deferDemo2())
 }

@@ -71,8 +71,23 @@ func price() {
 	//打印变量b   证明了a与b不是同一个地址变量
 	fmt.Println(b)
 }
+func changeValue(array [3]int) {
+	array[0] = 1
+	print(array)
+}
+func print(array [3]int) {
+	for _, value := range array {
+		fmt.Print(value)
+	}
+	fmt.Println()
+}
 func main() {
-	define()
-	get()
-	each()
+	//define()
+	//get()
+	//each()
+	arrayList:=[...]int{3,2,1}
+	fmt.Printf("%T \n",arrayList)
+	print(arrayList)
+	changeValue(arrayList)
+	print(arrayList)
 }
