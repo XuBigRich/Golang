@@ -70,7 +70,7 @@ func main() {
 	//float：输出float32与float64的精确大小
 	fmt.Println(math.MaxFloat32)
 	fmt.Println(math.MaxFloat64)
-	var d float32 = 3.2 //这就是Java里面的float类型
+	var d   = 3.2 //这就是Java里面的float类型
 	var e float64 = 2.2 //默认是float64 也就是Java里面的Double类型
 	fmt.Println(d, e)
 

@@ -222,8 +222,10 @@ func pointReferenced() {
 	//声明一个切片
 	slice1 := array[:]
 	fmt.Printf("数组的地址:%p \n", &array)   //去寻找array这个变量对应值的内存地址
+	fmt.Printf("数组的地址上的值:%v \n", *&array)
 	fmt.Printf("切片的地址:%p \n", slice1)   //取slice1指向的内存地址
 	fmt.Printf("切片的地址:%p \n", *&slice1) //取出指向slice1的指针的值
+
 	fmt.Println(`
 	由上面输出可知，值类型必须通过变量取指，才能找到变量指向的值，
 	而引用类型，只需要输出变量就可以了，因为引用类型他们本身就是指向的内存地址。
@@ -258,7 +260,7 @@ func main() {
 	//point()
 	//copySlice()
 	//del()
-	//pointReferenced()
+	pointReferenced()
 	//dilata()
 
 }

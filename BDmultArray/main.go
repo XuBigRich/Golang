@@ -46,6 +46,6 @@ func each() {
 }
 func main() {
 	//get()
-	//define()
+	define()
 	each()
 }

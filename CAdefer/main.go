@@ -23,6 +23,10 @@ defer：
 			返回值=x								返回值=x
 			RET指令								运行defer
 												RET指令
+	用语言描述return的汇编步骤：
+		第一步：返回值赋值
+		第二步：真正的RET指令
+	如果函数种存在defer语句对已经赋值的返回值进行了更改，那么会对返回值产生影响，因为defer运行于 第一步与第二步之间。
 */
 
 func deferDemo() {
@@ -31,6 +35,58 @@ func deferDemo() {
 	fmt.Println("end")
 	defer fmt.Println("呵呵呵")
 }
+
+//下面介绍几个刁钻的例子
+func f1() int {
+	x := 5
+	defer func() {
+		x++
+	}()
+	return x
+	//分解步骤
+	//result=5
+	//x++
+	//return result=5
+}
+
+func f2() (x int) {
+	defer func() {
+		x++
+	}()
+	return 5
+	//分解步骤
+	//x=5
+	//x++
+	//return x=6
+}
+
+func f3() (y int) {
+	x := 5
+	defer func() {
+		x++
+	}()
+	return x
+	//分解步骤
+	//y=5
+	//x++
+	//return y=5
+}
+
+func f4() (x int) {
+	defer func(x int) {
+		x++
+	}(x)
+	return 5
+	//分解步骤
+	//x=5
+	//x拷贝一份值传给匿名方法 由匿名变量做++运算 被拷贝传入的变量值变为6
+	//return x=5
+}
+
 func main() {
 	deferDemo()
+	fmt.Println(f1())
+	fmt.Println(f2())
+	fmt.Println(f3())
+	fmt.Println(f4())
 }
