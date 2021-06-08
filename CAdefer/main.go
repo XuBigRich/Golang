@@ -35,7 +35,6 @@ func deferDemo() {
 	fmt.Println("end")
 	defer fmt.Println("呵呵呵")
 }
-<<<<<<< HEAD
 
 //下面介绍几个刁钻的例子
 func f1() int {
@@ -84,29 +83,26 @@ func f4() (x int) {
 	//return x=5
 }
 
+func add(x int) int {
+	return x + 1
+}
+func deferDemo1() (x int) {
+	x = 1
+	defer add(x)
+	return x
+}
+func deferDemo2() int {
+	x := 1
+	defer add(x)
+	return x
+}
 func main() {
 	deferDemo()
 	fmt.Println(f1())
 	fmt.Println(f2())
 	fmt.Println(f3())
 	fmt.Println(f4())
-=======
-func add(x int) int {
-	return x + 1
-}
-func deferDemo1() (x int) {
-	x=1
-	defer add(x)
-	return x
-}
-func deferDemo2() int {
-	x:=1
-	defer add(x)
-	return x
-}
-func main() {
 	deferDemo()
 	fmt.Println(deferDemo1())
 	fmt.Println(deferDemo2())
->>>>>>> 20fbd6fb27b10c3520b6d95a391411fe5ae31c97
 }

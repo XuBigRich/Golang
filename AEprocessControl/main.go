@@ -6,7 +6,7 @@ import "fmt"
 大纲：
 	if判断：if语句与Java中的if语句整体相同，但是他增加了一个新的特性，就是在if代码块后面定义一个作用域只属于if语句块的变量
 	for循环: for循环是go语言中唯一的一种循环，go语言取消了while do-while循环
-			for循环整体与Java一致，但他比Java更强大的是go语言的for循环可以一起且在省略时必须一起省略初始语句与结束语句
+			for循环整体与Java一致，但他比Java更强大的是go语言的for循环可以一起,且在省略时必须一起,省略初始语句与结束语句
 			或者同时省略所有语句 构成for循环的死循环
 			for循环可以通过break goto return panic语句退出循环
 	for range(键值循环)：

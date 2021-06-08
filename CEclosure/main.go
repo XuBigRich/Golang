@@ -14,7 +14,9 @@ import (
 	这样做还有一个更神奇的地方就是，外面的方法有可能会干预内部的方法，这是Java代理所不具备的
 
 	闭包：闭包就是一个存在于函数内部的函数 ，这个内部函数除了引用了内部变量，还引用了其所在函数的外部变量，这样的函数叫做闭包，详情请看f3与f5与f6对闭包的探索。
-		闭包是一个函数，这个函数包含了他外部作用域的一个变量
+		闭包是一个函数，这个函数包含了他外部作用域的一个变量,
+	最新理解：
+		闭包使用了方法内的变量,根据闭包传入的值 与方法内的值进行计算的到结果，闭包存在于一个方法的小世界当中
 	闭包的底层原理：
 		1.函数可以作为返回值
 		2.函数内部查找顺序，先自己内部找，找不到外层找。
@@ -89,6 +91,14 @@ func calc(base int) (func(int) int, func(int) int) {
 	return add, sub
 }
 
+func adder() func(int) int {
+	sum := 0
+	return func(x int) int {
+		sum += x
+		return sum
+	}
+}
+
 func main() {
 	f1(f3(1, 2))
 	f5(f4, 2, 5)
@@ -100,6 +110,14 @@ func main() {
 	file := txt("file.txt")
 	fmt.Println(file)
 
-	ff1,ff2:=calc(10)
-	fmt.Println(ff1(1),ff2(2))
+	ff1, ff2 := calc(10)
+	fmt.Println(ff1(1), ff2(2))
+
+	pos, neg := adder(), adder()
+	for i := 0; i < 10; i++ {
+		fmt.Println(
+			pos(i),
+			neg(-2*i),
+		)
+	}
 }
