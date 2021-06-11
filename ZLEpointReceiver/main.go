@@ -63,6 +63,9 @@ func main() {
 	//方法调用
 	v.Abs(1)
 	fmt.Println(v)
+
+	&v.Abs(1)
+
 	v.Scale(1)
 	fmt.Println(v)
 
